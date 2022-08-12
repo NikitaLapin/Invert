@@ -349,7 +349,8 @@ GameObject:
   - component: {fileID: 1330282143}
   - component: {fileID: 1330282142}
   - component: {fileID: 1330282141}
-  - component: {fileID: 1330282145}
+  - component: {fileID: 1330282146}
+  - component: {fileID: 1330282147}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -452,7 +453,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330282139}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1330282145
+--- !u!114 &1330282146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -461,20 +462,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1330282139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196c0603da7b42da9f428a104ddbab0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f0aa60719850dc4aa01e9a6f6e9673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkableLayers:
-    m_Bits: 35
-  skinWidth: 0.01
-  stepOffset: 0.3
-  groundDetectionDistance: 0.1
-  <IsGrounded>k__BackingField: 0
-  <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
-  _position: {x: 0, y: 0, z: 0}
-  _rigidbody: {fileID: 0}
-  _capsuleCollider: {fileID: 0}
-  _transform: {fileID: 0}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  walkSpeed: 2
+  jumpPower: 6.5
+--- !u!114 &1330282147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330282139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00443496d8442bad998a63c7ac8807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputLogger: {fileID: 0}
 --- !u!1 &1400692331
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,7 +610,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1808889766}
-  - component: {fileID: 1808889767}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -627,18 +634,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1808889767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1808889765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87498c19281e4aed929064d5accd3712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1982514838
 GameObject:
   m_ObjectHideFlags: 0

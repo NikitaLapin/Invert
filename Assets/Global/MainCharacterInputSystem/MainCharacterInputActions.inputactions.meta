@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 116f527c53edef0448e0f2790ea3afbc
+guid: f8c1fa6da5ac9eb468d42b7fdd466262
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -9,6 +9,6 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 8404be70184654265930450def6a9037, type: 3}
   generateWrapperCode: 1
-  wrapperCodePath: Assets/Global/MainCharacterInput/MovementInput.cs
+  wrapperCodePath: Assets/Global/MainCharacterInputSystem/MovementInput.cs
   wrapperClassName: MovementInput
-  wrapperCodeNamespace: 
+  wrapperCodeNamespace: Global.MainCharacterInputSystem
