@@ -13,6 +13,8 @@ namespace Global.MainCameraFollow
 
         #endregion
 
+        #region SubStateMethods
+        
         private void Awake() => _cameraTransform = GetComponent<Transform>();
 
         private void FixedUpdate()
@@ -23,5 +25,7 @@ namespace Global.MainCameraFollow
             
             _cameraTransform.LookAt(target);
         }
+        
+        #endregion
     }
 }

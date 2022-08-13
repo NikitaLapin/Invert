@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MainCharacter.Movement
@@ -7,8 +8,8 @@ namespace MainCharacter.Movement
         #region Initialization
         
         [SerializeField] private LayerMask playerMask;
-        [SerializeField] private float walkSpeed = 2f;
-        [SerializeField] private float jumpPower = 6.5f;
+        [SerializeField] private float walkSpeed = 5f;
+        [SerializeField] private float jumpPower = 12.5f;
         
         private Transform _playerTransform;
         private CapsuleCollider _playerCollider;
@@ -17,7 +18,6 @@ namespace MainCharacter.Movement
         
         #endregion
 
-        
         #region MonoBehaviourMethods
 
         private void Awake()
@@ -30,9 +30,13 @@ namespace MainCharacter.Movement
         private void FixedUpdate()
         {
             _playerRigidBody.velocity = new Vector3(_movementInputHandler.CurrentInput.x * walkSpeed, _playerRigidBody.velocity.y, 0);
+
+            var playerLossyScale = _playerTransform.lossyScale;
+            var playerRadius = _playerCollider.radius * playerLossyScale.x;
+            var playerHeight = _playerCollider.height * playerLossyScale.y;
             
-            if (!Physics.SphereCast(_playerTransform.position, 0.5f, Vector3.down, out var _,
-                    _playerCollider.radius, playerMask) || !_movementInputHandler.IsJumpPressed) return;
+            if (!Physics.SphereCast(_playerTransform.position + _playerCollider.center, playerRadius, Vector3.down, out var hit,
+                    playerHeight / 2 - playerRadius + 0.01f, playerMask) || !_movementInputHandler.IsJumpPressed) return;
             
             _playerRigidBody.AddForce(Vector3.up * jumpPower, ForceMode.VelocityChange);
             _movementInputHandler.IsJumpPressed = false;
