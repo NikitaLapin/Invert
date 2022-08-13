@@ -1,7 +1,6 @@
 ﻿using System;
 using Global.MainCharacterInputSystem;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace MainCharacter.Movement
@@ -41,6 +40,7 @@ namespace MainCharacter.Movement
         #endregion
         
         #region Events
+
         private void OnJumped(InputAction.CallbackContext context) => IsJumpPressed = true;
 
         #endregion
