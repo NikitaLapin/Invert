@@ -21,6 +21,7 @@ namespace Scenes.FirstLevel.Scripts
             if(!PlayerPrefs.HasKey("Current Level")) PlayerPrefs.SetInt("Current Level", 1);
             
             var currentLevel = levels[PlayerPrefs.GetInt("Current Level") - 1];
+            Debug.Log(currentLevel.id);
             currentLevel.Activate(mainCharacter.transform, robot.transform);
         }
     }
