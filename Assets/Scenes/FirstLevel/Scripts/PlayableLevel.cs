@@ -36,6 +36,8 @@ namespace Scenes.FirstLevel.Scripts
             
             robot.SetActive(false);
             mainCharacter.SetActive(true);
+            
+            
         }
     }
 }
