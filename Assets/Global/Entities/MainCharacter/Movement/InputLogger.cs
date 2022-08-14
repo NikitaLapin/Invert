@@ -20,7 +20,6 @@ namespace MainCharacter.Movement
 
         private void Update()
         {
-            Debug.Log(_inputHistory);
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using System;
+using Global.Entities.MainCharacter.Movement;
 using Global.MainCharacterInputSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,12 +10,15 @@ namespace MainCharacter.Movement
     {
         #region Initialization
         
-        [SerializeField] private InputLogger inputLogger;
         [NonSerialized] public bool IsJumpPressed;
         [NonSerialized] public Vector2 CurrentInput;
-        private Vector2 _moveDirection; 
         
+        [SerializeField] private InputLogger inputLogger;
+        
+        private CharacterMover _characterMover;
         private MovementInput _movementInput;
+
+        private Vector2 _moveDirection;
 
         #endregion
 
@@ -23,8 +27,7 @@ namespace MainCharacter.Movement
         private void Awake()
         {
             _movementInput = new MovementInput();
-
-            _movementInput.Player.Jump.started += OnJumped;
+            _characterMover = GetComponent<CharacterMover>();
         }
 
         private void Update()
@@ -33,15 +36,27 @@ namespace MainCharacter.Movement
             Movement();
         }
 
-        private void OnEnable() => _movementInput.Enable();
+        private void OnEnable()
+        {
+            _movementInput.Enable();
+            
+            _movementInput.Player.Jump.started += OnJumped;
+            _movementInput.Player.Jump.canceled += OnJumped;
+        }
 
-        private void OnDisable() => _movementInput.Disable();
+        private void OnDisable()
+        {
+            _movementInput.Disable();
+            
+            _movementInput.Player.Jump.started -= OnJumped;
+            _movementInput.Player.Jump.canceled -= OnJumped;
+        }
 
         #endregion
         
         #region Events
 
-        private void OnJumped(InputAction.CallbackContext context) => IsJumpPressed = true;
+        private void OnJumped(InputAction.CallbackContext context) => IsJumpPressed = context.ReadValueAsButton();
 
         #endregion
 
@@ -50,7 +65,6 @@ namespace MainCharacter.Movement
         private void Movement()
         {
             CurrentInput = _moveDirection;
-            // if (CurrentInput != Vector2.zero) inputLogger.AddLog(CurrentInput);
         }
         
         #endregion

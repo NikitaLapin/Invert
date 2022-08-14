@@ -22,11 +22,12 @@ namespace LoadScreen.Scripts
         
         private RectTransform _rectTransform;
         private bool _isAccessable = false;
+        
         private void Awake(){
             _rectTransform = GetComponent<RectTransform>();
-            if(!PlayerPrefs.HasKey("Level")) PlayerPrefs.SetInt("Level", 1);
+            if(!PlayerPrefs.HasKey("Last Level")) PlayerPrefs.SetInt("Last Level", 1);
 
-            var currentLevel = PlayerPrefs.GetInt("Level");
+            var currentLevel = PlayerPrefs.GetInt("Last Level");
             
             if (currentLevel >= levelNumber)
             {
@@ -63,6 +64,8 @@ namespace LoadScreen.Scripts
                 source.clip = clickAudioClip;
                 source.Play();
                 SceneManager.LoadScene(scene);
+                
+                PlayerPrefs.SetInt("Current Level", levelNumber);
                 return;
             }
             
