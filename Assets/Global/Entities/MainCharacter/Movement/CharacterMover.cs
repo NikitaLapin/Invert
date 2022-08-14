@@ -1,5 +1,4 @@
 ﻿using Global.Entities.MainCharacter.Movement.StateMachine;
-using MainCharacter.Movement;
 using UnityEngine;
 
 namespace Global.Entities.MainCharacter.Movement

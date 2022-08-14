@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelFinish : MonoBehaviour
+namespace Scenes.FirstLevel.Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class LevelFinish : MonoBehaviour
     {
-        
-    }
+        private PlayableLevel _level;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake()
+        {
+            _level = GetComponentInParent<PlayableLevel>();
+        }
+
+        public void OnCharacterLevelFinished() => _level.CharacterLevelFinished();
     }
 }

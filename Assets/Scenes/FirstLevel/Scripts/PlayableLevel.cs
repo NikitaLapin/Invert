@@ -22,9 +22,14 @@ namespace Scenes.FirstLevel.Scripts
             if (Camera.main != null) Camera.main.transform.position = levelCameraPosition.position;
         }
 
-        public void OnLevelFinished()
+        public void CharacterLevelFinished()
         {
-            
+            Debug.Log("OnCharacterLevelFinished");
+        }
+
+        public void RobotLevelFinished()
+        {
+            Debug.Log("OnRobotLevelFinished");
         }
     }
 }

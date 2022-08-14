@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Global.Entities.MainCharacter.Movement;
-using MainCharacter.Movement;
+using Global.Entities.Robot.Movement;
 using UnityEngine;
 
 namespace Scenes.FirstLevel.Scripts

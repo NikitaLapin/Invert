@@ -1,6 +1,6 @@
 ﻿using System;
+using Global.Entities.Robot.Movement;
 using Global.MainCharacterInputSystem;
-using MainCharacter.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,6 +28,7 @@ namespace Global.Entities.MainCharacter.Movement
         {
             _movementInput = new MovementInput();
             _characterMover = GetComponent<CharacterMover>();
+            inputLogger = gameObject.AddComponent<InputLogger>();
         }
 
         private void Update()
@@ -65,8 +66,9 @@ namespace Global.Entities.MainCharacter.Movement
         private void Movement()
         {
             CurrentInput = _moveDirection;
+            inputLogger.AddLog(CurrentInput);
         }
-        
+
         #endregion
     }
 }
