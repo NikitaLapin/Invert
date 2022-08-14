@@ -1,10 +1,10 @@
 ﻿using System;
-using Global.Entities.MainCharacter.Movement;
 using Global.MainCharacterInputSystem;
+using MainCharacter.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MainCharacter.Movement
+namespace Global.Entities.MainCharacter.Movement
 {
     public class MovementInputHandler : MonoBehaviour
     {

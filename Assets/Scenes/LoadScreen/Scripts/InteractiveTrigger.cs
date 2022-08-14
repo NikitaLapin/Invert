@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace LoadScreen.Scripts
+namespace Scenes.LoadScreen.Scripts
 {
     public class InteractiveTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {

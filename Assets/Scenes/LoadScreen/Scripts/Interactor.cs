@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Scenes.LoadScreen.Scripts;
 using UnityEngine;
 
 namespace LoadScreen.Scripts
