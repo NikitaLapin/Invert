@@ -15,7 +15,7 @@ namespace Global.Entities.MainCharacter.Movement
         [SerializeField] private float jumpStrength;
         [SerializeField] private float highJumpStrength;
         [SerializeField] private float speedInterpolation = 6f;
-        
+
         public Transform PlayerTransform { get; private set; }
         public CharacterController CharacterController { get; private set; }
         public MovementInputHandler MovementInputHandler { get; private set; }
@@ -28,6 +28,7 @@ namespace Global.Entities.MainCharacter.Movement
         public float SpeedInterpolation => speedInterpolation;
 
         private State _currentState;
+        private float _originalSlopeLimit;
 
         #endregion
 
@@ -45,6 +46,8 @@ namespace Global.Entities.MainCharacter.Movement
         {
             _currentState = new IdleState(this);
             _currentState.OnStateEnter();
+
+            _originalSlopeLimit = CharacterController.slopeLimit;
         }
 
         private void FixedUpdate()
@@ -56,6 +59,8 @@ namespace Global.Entities.MainCharacter.Movement
 
             IsGrounded = Physics.SphereCast(center, radius, Vector3.down, out _, height/2 - radius + 0.1f, playerMask);
             
+            CharacterController.slopeLimit = IsGrounded ? _originalSlopeLimit : 45f;
+            
             if (_currentState.TrySwitchState(out var newState))
             {
                 _currentState.OnStateExit();
@@ -63,7 +68,7 @@ namespace Global.Entities.MainCharacter.Movement
                 _currentState.OnStateEnter();
                 return;
             }
-            
+
             _currentState.OnStateUpdate();
         }
 
