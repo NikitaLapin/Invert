@@ -18,7 +18,7 @@ namespace Global.Entities.MainCharacter.Movement
         private CharacterMover _characterMover;
         private MovementInput _movementInput;
 
-        private Vector2 _moveDirection;
+        private Vector2 _moveDirection; // TO DELETE
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace Global.Entities.MainCharacter.Movement
             inputLogger = gameObject.AddComponent<InputLogger>();
         }
 
-        private void Update()
+        private void Update() // TO DELETE
         {
             _moveDirection = _movementInput.Player.Movement.ReadValue<Vector2>();
             Movement();
@@ -43,6 +43,10 @@ namespace Global.Entities.MainCharacter.Movement
             
             _movementInput.Player.Jump.started += OnJumped;
             _movementInput.Player.Jump.canceled += OnJumped;
+
+            _movementInput.Player.Movement.started += OnMovement;
+            _movementInput.Player.Movement.performed += OnMovement;
+            _movementInput.Player.Movement.canceled += OnMovement;
         }
 
         private void OnDisable()
@@ -51,6 +55,10 @@ namespace Global.Entities.MainCharacter.Movement
             
             _movementInput.Player.Jump.started -= OnJumped;
             _movementInput.Player.Jump.canceled -= OnJumped;
+            
+            _movementInput.Player.Movement.started -= OnMovement;
+            _movementInput.Player.Movement.performed -= OnMovement;
+            _movementInput.Player.Movement.canceled -= OnMovement;
         }
 
         #endregion
@@ -59,15 +67,13 @@ namespace Global.Entities.MainCharacter.Movement
 
         private void OnJumped(InputAction.CallbackContext context) => IsJumpPressed = context.ReadValueAsButton();
 
+        private void OnMovement(InputAction.CallbackContext context){}
+
         #endregion
 
         #region PrivateMethods
 
-        private void Movement()
-        {
-            CurrentInput = _moveDirection;
-            inputLogger.AddLog(CurrentInput);
-        }
+        private void Movement() => CurrentInput = _moveDirection; // TO DELETE
 
         #endregion
     }

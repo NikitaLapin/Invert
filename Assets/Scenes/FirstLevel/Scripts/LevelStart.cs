@@ -11,6 +11,6 @@ namespace Scenes.FirstLevel.Scripts
             _level = GetComponentInParent<PlayableLevel>();
         }
         
-        public void OnRobotLevelFinished() => _level.RobotLevelFinished();
+        public void OnRobotLevelFinished(GameObject robot, GameObject mainCharacter) => _level.RobotLevelFinished(robot, mainCharacter);
     }
 }

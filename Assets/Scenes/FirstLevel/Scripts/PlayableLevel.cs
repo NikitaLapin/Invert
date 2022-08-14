@@ -22,14 +22,20 @@ namespace Scenes.FirstLevel.Scripts
             if (Camera.main != null) Camera.main.transform.position = levelCameraPosition.position;
         }
 
-        public void CharacterLevelFinished()
+        public void CharacterLevelFinished(GameObject mainCharacter, GameObject robot)
         {
             Debug.Log("OnCharacterLevelFinished");
+            
+            mainCharacter.SetActive(false);
+            robot.SetActive(true);
         }
 
-        public void RobotLevelFinished()
+        public void RobotLevelFinished(GameObject robot, GameObject mainCharacter)
         {
             Debug.Log("OnRobotLevelFinished");
+            
+            robot.SetActive(false);
+            mainCharacter.SetActive(true);
         }
     }
 }
